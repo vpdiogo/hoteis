@@ -1,0 +1,9 @@
+{
+    "git.ignoreLimitWarning": true,
+    "workbench.colorTheme": "Shades of Purple",
+    "files.exclude": {
+        "**/__pycache__": true,
+        ".pytest_cache":true,
+        "sjanalysis.egg-info":true
+    }
+}

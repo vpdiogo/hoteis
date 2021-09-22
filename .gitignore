@@ -1,0 +1,11 @@
+env/
+
+__pycache__/
+
+.pytest_cache
+
+.coverage
+
+hoteis.egg-info/
+
+**/*.secrets.*
