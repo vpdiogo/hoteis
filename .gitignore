@@ -9,3 +9,5 @@ __pycache__/
 hoteis.egg-info/
 
 **/*.secrets.*
+
+base.db
