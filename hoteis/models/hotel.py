@@ -4,7 +4,7 @@ class HotelModel(base.Model):
     __tablename__ = 'hoteis'
 
     hotel_id = base.Column(base.String, primary_key=True)
-    name = base.Column(base.String(80))
+    nome = base.Column(base.String(80))
     estrelas = base.Column(base.Float(precision=1))
     diaria = base.Column(base.Float(precision=2))
     cidade = base.Column(base.String(40))
@@ -25,3 +25,14 @@ class HotelModel(base.Model):
             'cidade': self.cidade
 
         }
+
+    @classmethod
+    def find_hotel(cls, hotel_id):
+        hotel = cls.query.filter_by(hotel_id=hotel_id).first() # SELECT * FROM hoteis WHERE hotel_id = $hotel_id
+        if hotel:
+            return hotel
+        return None
+
+    def save_hotel(self):
+        base.session.add(self)
+        base.session.commit()
