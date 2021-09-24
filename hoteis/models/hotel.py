@@ -42,3 +42,7 @@ class HotelModel(base.Model):
         self.estrelas = estrelas
         self.diaria = diaria
         self.cidade = cidade
+
+    def delete_hotel(self):
+        base.session.delete(self)
+        base.session.commit()
