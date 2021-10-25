@@ -1,11 +1,11 @@
-from sqlite3.dbapi2 import Cursor
 # from typing_extensions import Required
 from flask_restful import Resource, reqparse
 from models.site import SiteModel
 from models.hotel import HotelModel
 from resources.filters import normalize_path_params, consulta_com_cidade, consulta_sem_cidade
 from flask_jwt_extended import jwt_required
-import sqlite3
+import psycopg2
+from config_json import *
 
 # path /hoteis?cidade=Rio de Janeiro&estrelas_min=4&diaria_max=400
 path_params = reqparse.RequestParser()
@@ -20,7 +20,7 @@ path_params.add_argument('offset', type=float)
 class Hoteis(Resource):
     def get(self):
 
-        connection = sqlite3.connect("base.db")
+        connection = psycopg2.connect(DATABASE_URL) # user=USER, password=PASSWORD, host=HOST, port=PORT, database=DATABASE
         cursor = connection.cursor()
 
         dados = path_params.parse_args()
@@ -29,21 +29,24 @@ class Hoteis(Resource):
 
         if not parametros.get('cidade'):
             tupla_chaves = tuple([parametros[chave] for chave in parametros])
-            resultado = cursor.execute(consulta_sem_cidade, tupla_chaves)
+            cursor.execute(consulta_sem_cidade, tupla_chaves)
+            resultado = cursor.fetchall()
         else:
             tupla_chaves = tuple([parametros[chave] for chave in parametros])
-            resultado = cursor.execute(consulta_com_cidade, tupla_chaves)
+            cursor.execute(consulta_com_cidade, tupla_chaves)
+            resultado = cursor.fetchall()
 
         hoteis = []
-        for linha in resultado:
-            hoteis.append({
-            'hotel_id': linha[0],
-            'nome': linha[1],
-            'estrelas': linha[2] ,
-            'diaria': linha[3],
-            'cidade': linha[4],
-            'site_id': linha[5]
-            })
+        if resultado:
+            for linha in resultado:
+                hoteis.append({
+                'hotel_id': linha[0],
+                'nome': linha[1],
+                'estrelas': linha[2] ,
+                'diaria': linha[3],
+                'cidade': linha[4],
+                'site_id': linha[5]
+                })
 
         return {'hoteis': hoteis} # SELECT * FROM hoteis
 
