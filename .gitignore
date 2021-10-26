@@ -11,3 +11,5 @@ hoteis.egg-info/
 **/*.secrets.*
 
 base.db
+
+credentials.json
