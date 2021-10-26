@@ -6,6 +6,7 @@ from models.hotel import HotelModel
 from resources.filters import normalize_path_params, consulta_com_cidade, consulta_sem_cidade
 from flask_jwt_extended import jwt_required
 import sqlite3
+from config_json import *
 
 # path /hoteis?cidade=Rio de Janeiro&estrelas_min=4&diaria_max=400
 path_params = reqparse.RequestParser()
@@ -20,7 +21,7 @@ path_params.add_argument('offset', type=float)
 class Hoteis(Resource):
     def get(self):
 
-        connection = sqlite3.connect("base.db")
+        connection = sqlite3.connect(f"{DATABASE}.db")
         cursor = connection.cursor()
 
         dados = path_params.parse_args()
