@@ -64,19 +64,19 @@ python3 app.py
 
 |Method   | URL
 |---------|----------------------------------
-|GET      | [/hoteis]
-|GET      | [/hoteis/bravo]
-|GET      | [/hoteis?estrelas_min=4.5&limit=10&offset=0&diaria_max=600]
+|GET      | /hoteis
+|GET      | /hoteis/bravo
+|GET      | /hoteis?estrelas_min=4.5&limit=10&offset=0&diaria_max=600
 
 ### 2. Register User
 
 |Method   | URL
 |---------|----------------------------------
-|POST     | [/cadastro]
+|POST     | /cadastro
 
 |Header
 |---------------------------------------------
-|Content-Type | [application/json]
+|Content-Type | application/json
 
 |Request Body
 |---------------------------------------------
@@ -89,11 +89,11 @@ python3 app.py
 
 |Method   | URL
 |---------|----------------------------------
-|POST     | [/login]
+|POST     | /login
 
 |Header
 |---------------------------------------------
-|Content-Type | [application/json]
+|Content-Type | application/json
 
 |Request Body
 |---------------------------------------------
@@ -108,12 +108,12 @@ Copy access token.
 
 |Method   | URL
 |---------|----------------------------------
-|POST     | [/hoteis/teste]
+|POST     | /hoteis/teste
 
 |Header
 |---------------------------------------------
-|Content-Type  | [application/json]
-|Authorization | [Bearer {access_token}]
+|Content-Type  | application/json
+|Authorization | Bearer {access_token}
 
 |Request Body
 |---------------------------------------------
@@ -128,12 +128,12 @@ Copy access token.
 
 |Method   | URL
 |---------|----------------------------------
-|PUT      | [/hoteis/teste]
+|PUT      | /hoteis/teste
 
 |Header
 |---------------------------------------------
-|Content-Type  | [application/json]
-|Authorization | [Bearer {access_token}]
+|Content-Type  | application/json
+|Authorization | Bearer {access_token}
 
 |Request Body
 |---------------------------------------------
@@ -148,41 +148,41 @@ Copy access token.
 
 |Method   | URL
 |---------|----------------------------------
-|DELETE   | [/hoteis/teste]
+|DELETE   | /hoteis/teste
 
 |Header
 |---------------------------------------------
-|Authorization | [Bearer {access_token}]
+|Authorization | Bearer {access_token}
 
 ### 7. Logout
 
 |Method   | URL
 |---------|----------------------------------
-|POST     | [/logout]
+|POST     | /logout
 
 |Header
 |---------------------------------------------
-|Authorization | [Bearer {access_token}]
+|Authorization | Bearer {access_token}
 
 ### 8. Consult User Data
 
 |Method   | URL
 |---------|----------------------------------
-|GET      | [/usuarios/1]
+|GET      | /usuarios/1
 
 |Header
 |---------------------------------------------
-|Content-Type  | [application/json]
+|Content-Type  | application/json
 
 ### 9. Delete User
 
 |Method   | URL
 |---------|----------------------------------
-|DELETE   | [/usuarios/1]
+|DELETE   | /usuarios/1
 
 |Header
 |---------------------------------------------
-|Authorization | [Bearer {access_token}]
+|Authorization | Bearer {access_token}
 
 ## Suggestions
 
